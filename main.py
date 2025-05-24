@@ -11,6 +11,7 @@ from explosion import Explosion
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    background = pygame.transform.scale(pygame.image.load("assets/background.jpg"), (SCREEN_WIDTH, SCREEN_HEIGHT)).convert()
     explosion_sound = pygame.mixer.Sound("assets/explosion.wav")
     pygame.display.set_caption("Asteroids Game")
     font = pygame.font.SysFont(None, 36)
@@ -73,7 +74,7 @@ def main():
                     Explosion(asteroid.position)
                     explosion_sound.play()
 
-        screen.fill("black")
+        screen.blit(background, (0, 0))
 
         for obj in drawable:
             obj.draw(screen)
